@@ -1,0 +1,8 @@
+{
+  "name": "Aura AI: Personal Soul Assistant",
+  "description": "A sophisticated personal assistant featuring daily scheduling, smart email management, LinkedIn job tracking, and bidirectional voice communication with human-like memory.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}

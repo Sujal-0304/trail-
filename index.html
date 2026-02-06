@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura AI - Neural Soul Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #020617;
+      --accent-cyan: #06b6d4;
+      --accent-fuchsia: #d946ef;
+      --accent-rose: #fb7185;
+      --accent-amber: #fbbf24;
+      --accent-emerald: #10b981;
+      --accent-violet: #8b5cf6;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-deep);
+      color: #f8fafc;
+      overflow: hidden;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .font-outfit {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Cosmic Ethereal Mesh Gradient Background */
+    @keyframes mesh-drift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .mesh-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 10% 10%, rgba(6, 182, 212, 0.15) 0px, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(217, 70, 239, 0.12) 0px, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(251, 113, 133, 0.08) 0px, transparent 50%),
+        radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.1) 0px, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(251, 191, 36, 0.1) 0px, transparent 40%);
+      background-size: 200% 200%;
+      animation: mesh-drift 20s ease-in-out infinite;
+    }
+
+    .mesh-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://grainy-gradients.vercel.app/noise.svg');
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .glass-card {
+      background: rgba(30, 41, 59, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .glass-card:hover {
+      background: rgba(30, 41, 59, 0.45);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Neon Glow Utilities - Aesthetic Palette */
+    .glow-cyan { box-shadow: 0 0 25px rgba(6, 182, 212, 0.25); }
+    .glow-fuchsia { box-shadow: 0 0 25px rgba(217, 70, 239, 0.25); }
+    .glow-rose { box-shadow: 0 0 25px rgba(251, 113, 133, 0.25); }
+    .glow-amber { box-shadow: 0 0 25px rgba(251, 191, 36, 0.25); }
+    .glow-emerald { box-shadow: 0 0 25px rgba(16, 185, 129, 0.25); }
+    .glow-violet { box-shadow: 0 0 25px rgba(139, 92, 246, 0.25); }
+
+    /* Multi-color Progress Bar - No Indigo */
+    .multi-progress {
+      background: linear-gradient(to right, #06b6d4, #d946ef, #fb7185, #fbbf24, #10b981);
+      background-size: 500% 500%;
+      animation: mesh-drift 12s linear infinite;
+    }
+
+    .scroll-mask-fade {
+      mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    }
+
+    /* Custom Thinner Scrollbar for Rail */
+    .custom-scrollbar-thin::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes key-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(244, 63, 94, 0); }
+    }
+    .key-alert {
+      animation: key-pulse 2s infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div class="mesh-background"></div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
